@@ -10,9 +10,7 @@ import os
 import requests 
 import random
 import subprocess
-
-
-
+import importlib
 
 class NetWizard():
     def __init__(self):
@@ -89,8 +87,6 @@ class NetWizard():
                 self.menuOptions()
             
             
-            elif user_input == '0':
-                self.quit()
 
     
     def menuOptions(self):
@@ -129,28 +125,33 @@ class NetWizard():
                 self.print_banner()
             
 
+            elif user_input == '0':
+                self.quit()
+
             elif user_input == '1':
-                self.option_not_found
+                self.option_not_found()
 
             
             elif user_input == '2':
-                self.option_not_found
+                self.option_not_found()
             
             
             elif user_input == '3':
-                self.option_not_found
+
+                self.option_not_found()
+
                 
             
             elif user_input == '4':
-                self.option_not_found
+                self.option_not_found()
             
             
             elif user_input == '5':
-                self.option_not_found
+                self.install_menu()
             
             
             elif user_input == '6':
-               self.option_not_found
+               self.option_not_found()
 
 
             elif user_input == '7':
@@ -177,7 +178,7 @@ class NetWizard():
 
 
             elif user_input == '20':
-                self.clear_screen()
+                
                 self.print_banner()
                 PortScanner()
                 print()
@@ -186,7 +187,56 @@ class NetWizard():
                 self.print_banner()
                 
             
-    
+    def install_menu(self):
+            self.clear_screen()
+            self.print_banner()
+            try:
+                package_name = 'kali-anonsurf'
+                package = "git clone https://github.com/Und3rf10w/kali-anonsurf.git"
+                package_dir = 'kali-anonsurf'
+                if not os.path.exists(package_dir):
+                    user_install = input(f"The package {package_name} is not installed would you like to install it? (Y, N)")
+                    if user_install == 'Y':
+                        self.clear_screen()
+                        self.print_banner()
+                        home_dir = os.path.expanduser("~")
+                        os.chdir(home_dir)
+                        subprocess.run(package, shell=True, check=True)
+                        os.chdir('kali-anonsurf')
+                        subprocess.run(['./installer.sh'], check=True)
+                else:
+                    self.returnInput()
+                    try:
+                        os.chdir(package_dir)
+                        start_command = 'anonsurf start'
+                        subprocess.run(start_command, shell=True)
+                        
+                    except Exception as e:
+                        print(f"An error occurred: {e}")
+                        print("Click enter to return")
+            
+            except Exception as e:
+                print(f"An error occurred: {e}")
+                print("Click enter to return")
+            self.returnInput()
+                            g
+                            
+
+                
+    def returnInput(self):
+            input() == '\n'
+            self.clear_screen()
+            self.print_banner()
+            self.menuOptions()
+
+        
+    def packageFound(self):
+        pass
+
+
+    def packageNotFound(self):
+        pass
+
 
 
     def option_not_found(self):
