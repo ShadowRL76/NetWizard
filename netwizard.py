@@ -194,21 +194,20 @@ class NetWizard():
                 package_name = 'kali-anonsurf'
                 package = "git clone https://github.com/Und3rf10w/kali-anonsurf.git"
                 package_dir = 'kali-anonsurf'
-                home_dir = os.path.expanduser("~")
-                install_path = os.path.join(home_dir, package_dir)
                 if not os.path.exists(package_dir):
                     user_install = input(f"The package {package_name} is not installed would you like to install it? (Y, N)")
                     if user_install == 'Y':
                         self.clear_screen()
                         self.print_banner()
+                        home_dir = os.path.expanduser("~")
                         os.chdir(home_dir)
                         subprocess.run(package, shell=True, check=True)
-                        os.chdir(install_path)
+                        os.chdir('kali-anonsurf')
                         subprocess.run(['./installer.sh'], check=True)
                 else:
                     self.returnInput()
                     try:
-                        os.chdir(install_path)
+                        os.chdir(package_dir)
                         start_command = 'anonsurf start'
                         subprocess.run(start_command, shell=True)
                         
