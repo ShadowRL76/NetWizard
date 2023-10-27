@@ -219,7 +219,7 @@ class NetWizard():
                 print(f"An error occurred: {e}")
                 print("Click enter to return")
             self.returnInput()
-                            g
+                            
                             
 
                 
