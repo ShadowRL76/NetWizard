@@ -100,7 +100,7 @@ class NetWizard():
             print("5) Enable anonsurf\t d5) Disable anonssurf    | ks) keyboard shortcuts")
             print("6) Anonssurf's status\t d6) Restart anonssurf    | d) Buy me a coffee")
             print("7) View public IP\t                          | s) Go to settings menu")
-            print("8) View MAC")
+            print("8) View MAC                                       | r) Reboot System")                                
             print("9) TOOLS \t         15) Spoof EMAIL")
             print("10) Handshake \t         16) Ngrok port forward")
             print("11) Find WPS pin\t 17) Ask (Howdoi tool)")
@@ -125,38 +125,32 @@ class NetWizard():
                 self.print_banner()
             
 
-            elif user_input == '0':
-                self.quit()
-
             elif user_input == '1':
-                self.option_not_found()
+                pass
 
-            
+
             elif user_input == '2':
-                self.option_not_found()
-            
-            
+                pass
+
+
             elif user_input == '3':
+                pass
 
-                self.option_not_found()
 
-                
-            
             elif user_input == '4':
-                self.option_not_found()
-            
-            
+                self.anonym8_install_menu()
+
+
             elif user_input == '5':
-                self.anonsurf_install_menu()   
-                
-            
-            
+                self.anonsurf_install_menu()
+
+
             elif user_input == '6':
-                self.option_not_found()
+                pass
 
 
             elif user_input == '7':
-                self.clear_screen()     
+                self.clear_screen()
                 try:
                     self.print_banner()
                     print(f"Your public IP is: {requests.get('http://ip.42.pl/raw').text}")
@@ -170,22 +164,80 @@ class NetWizard():
                 except Exception as e:
                     print("Error: No public IP address found")
 
-
             elif user_input == '8':
                 self.clear_screen()
                 self.print_banner()
                 self.MacAddressInterfaceMenu()
 
+            elif user_input == '9':
+                pass
+
+
+            elif user_input == '10':
+                pass
+
+
+            elif user_input == '11':
+                pass
+
+
+            elif user_input == '12':
+                pass
+
+
+            elif user_input == '13':
+                pass
+
+
+            elif user_input == '14':
+               pass
+
+
+            elif user_input == '15':
+                pass
+
+
+            elif user_input == '16':
+                pass
+
+
+            elif user_input == '17':
+                pass
+
+
+            elif user_input == '18':
+               pass
+
+
+            elif user_input == '19':
+                pass
+
 
             elif user_input == '20':
-                
                 self.print_banner()
                 PortScanner()
                 print()
                 input('Press enter to continue...')
                 self.clear_screen()
                 self.print_banner()
-                
+
+
+            elif user_input == 'd1':
+                pass
+
+
+            elif user_input == 'd2':
+                pass
+
+
+            elif user_input == 'd3':
+                pass
+
+
+            elif user_input == 'd4':
+                pass
+
+
             elif user_input == 'd5':
                 self.anonsurf_stop_menu()
 
@@ -194,11 +246,83 @@ class NetWizard():
                 self.anonsurf_restart_menu()
 
 
+            elif user_input == 'l':
+                pass
+
+
+            elif user_input == 'scan':
+                pass
+
+
+            elif user_input == 'start':
+                pass
+
+
+            elif user_input == 'stop':
+                pass
+
+
+            elif user_input == 'update':
+                pass
+
+
+            elif user_input == 'errors':
+                pass
+
+
+            elif user_input == 'ks':
+                pass
+
+
+            elif user_input == 'ds':
+                pass
+
+
+            elif user_input == 's':
+               pass
+
+            
+            elif user_input == 'r':
+                subprocess.run(['reboot'])
 
 
 
 
+    def anonym8_install_menu(self):
+        self.clear_screen()
+        self.print_banner()
+        try:
+            package_name = 'anonym8'
+            package = "git clone https://github.com/HiroshiManRise/anonym8.git"
+            package_dir = 'anonym8'
+            home_dir = os.path.expanduser("~")
+            start_command = 'anonym8 start'
+            print("User's home directory:", home_dir)
 
+            print("Current working directory:", os.getcwd())
+            print("Trying to change to directory:", home_dir)
+
+            if not os.path.exists(os.path.join(home_dir, package_dir)):
+                user_install = input(f"The package {package_name} is not installed. Would you like to install it? (Y, N)")
+                if user_install == 'Y':
+                    self.clear_screen()
+                    self.print_banner()
+                    os.chdir(home_dir)
+                    subprocess.run(package, shell=True, check=True)
+                    os.chdir(package_dir)
+                    subprocess.run(['./INSTALL.sh'], check=True)
+            else:
+                try:
+                    os.chdir(os.path.join(home_dir, package_dir))
+                    subprocess.run(start_command, shell=True)
+                    print("anonym8 started")
+                except Exception as e:
+                    print(f"An error occurred: {e}")
+
+        except Exception as e:
+            print(f"An error occurred: {e}")
+        print()
+        self.returnInput()
 
 
     def anonsurf_install_menu(self):
@@ -237,6 +361,7 @@ class NetWizard():
         print()
         self.returnInput()
 
+
     def anonsurf_stop_menu(self):
         self.clear_screen()
         self.print_banner()
@@ -249,7 +374,8 @@ class NetWizard():
             print("Anonsurf stopped successfully")
         except Exception as e:
             print(f"An error occurred: {e}")
-                        
+
+
     def anonsurf_restart_menu(self):
         self.clear_screen()
         self.print_banner()
@@ -264,6 +390,7 @@ class NetWizard():
             print(f"An error occurred: {e}")
         self.returnInput()
 
+
     def returnInput(self):
             print("Click enter to return...")
             input() == '\n'
@@ -272,14 +399,6 @@ class NetWizard():
             self.menuOptions()
 
         
-    def packageFound(self):
-        pass
-
-
-    def packageNotFound(self):
-        pass
-
-
 
     def option_not_found(self):
         print("Option not found")
@@ -287,8 +406,10 @@ class NetWizard():
         self.clear_screen()
         self.print_banner()
 
+
     def clear_screen(self):
         os.system('clear')
+
 
     def print_banner(self):
         banner = pyfiglet.Figlet(font='doom')
@@ -364,5 +485,7 @@ class PortScanner:
 if __name__ == '__main__':
     net_wizard = NetWizard()
     net_wizard.menuOptions()
+    
+
     
 
