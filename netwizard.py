@@ -147,17 +147,16 @@ class NetWizard():
             
             
             elif user_input == '5':
-                    self.install_menu()   
+                self.anonsurf_install_menu()   
                 
             
             
             elif user_input == '6':
-               self.option_not_found()
+                self.option_not_found()
 
 
             elif user_input == '7':
-                self.clear_screen()
-                
+                self.clear_screen()     
                 try:
                     self.print_banner()
                     print(f"Your public IP is: {requests.get('http://ip.42.pl/raw').text}")
@@ -187,7 +186,19 @@ class NetWizard():
                 self.clear_screen()
                 self.print_banner()
                 
-    def install_menu(self):
+            elif user_input == 'd5':
+                self.anonsurf_stop_menu()
+
+
+
+
+
+
+
+
+
+
+    def anonsurf_install_menu(self):
         self.clear_screen()
         self.print_banner()
         try:
@@ -223,7 +234,19 @@ class NetWizard():
         print()
         self.returnInput()
 
-
+    def anonsurf_stop_menu(self):
+        self.clear_screen()
+        self.print_banner()
+        home_dir = os.path.expanduser("~")
+        package_dir = 'kali-anonsurf'
+        stop_command = 'anonsurf stop'
+        
+        try:
+            os.chdir(os.path.join(home_dir, package_dir))
+            subprocess.run(stop_command, shell=True)
+            print("Anonsurf stopped successfully")
+        except Exception as e:
+            print(f"An error occurred: {e}")
                         
             
                 
