@@ -190,39 +190,32 @@ class NetWizard():
     def install_menu(self):
             self.clear_screen()
             self.print_banner()
-            try:
-                package_name = 'kali-anonsurf'
-                package = "git clone https://github.com/Und3rf10w/kali-anonsurf.git"
-                package_dir = 'kali-anonsurf'
-                print("Current working directory:", os.getcwd())
-                print("Trying to change to directory:", package_dir)
-                if not os.path.exists(package_dir):
-                    user_install = input(f"The package {package_name} is not installed would you like to install it? (Y, N)")
-                    if user_install == 'Y':
-                        self.clear_screen()
-                        self.print_banner()
-                        home_dir = os.path.expanduser("~")
-                        os.chdir('/root/home')
-                        subprocess.run(package, shell=True, check=True)
-                        os.chdir('kali-anonsurf')
-                        subprocess.run(['./installer.sh'], check=True)
-                else:
-                    try:
-                        os.chdir(package_dir)
-                        start_command = 'anonsurf start'
-                        subprocess.run(start_command, shell=True)
-                        print("Anonsurf started")
-                    except Exception as e:
-                        print(f"An error occurred: {e}")
+            package_name = 'kali-anonsurf'
+            package_dir = '/home/kali-anonsurf'
+            print("Current working directory:", os.getcwd())
+            print("Trying to change to directory:", package_dir)
+            if os.path.exists(package_dir):
+                try:
+                    os.chdir(package_dir)
+                    start_command = 'anonsurf start'
+                    subprocess.run(start_command, shell=True)
+                    print("Anonsurf started")
+                except Exception as e:
+                    print(f"An error occurred: {e}")
+            else:
+                user_install = input(f"The package {package_name} is not installed. Would you like to install it? (Y, N)")
+                if user_install == 'Y':
+                    self.clear_screen()
+                    self.print_banner()
+                    os.chdir('/home')  
+                    print(f"Current directory before cloning: {os.getcwd()}")
+                    subprocess.run(["git", "clone", "https://github.com/Und3rf10w/kali-anonsurf.git"], check=True)
+                    print(f"Current directory after cloning: {os.getcwd()}")
+                    os.chdir('kali-anonsurf')
+                    print(f"Current directory after changing to kali-anonsurf: {os.getcwd()}")
+                    subprocess.run(['./installer.sh'], check=True)
                         
             
-            except Exception as e:
-                print(f"An error occurred: {e}")
-            print()
-            self.returnInput()
-                            
-                            
-
                 
     def returnInput(self):
             print("Click enter to return...")
