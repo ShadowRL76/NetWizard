@@ -147,20 +147,16 @@ class NetWizard():
             
             
             elif user_input == '5':
-                self.install_menu()   
+                self.anonsurf_install_menu()   
                 
             
             
             elif user_input == '6':
-               self.option_not_found()
+                self.option_not_found()
 
 
             elif user_input == '7':
-                self.clear_screen()
-            
-            elif user_input == 'd5':
-                self.anonsurf_stop_menu()
-                
+                self.clear_screen()     
                 try:
                     self.print_banner()
                     print(f"Your public IP is: {requests.get('http://ip.42.pl/raw').text}")
@@ -190,6 +186,18 @@ class NetWizard():
                 self.clear_screen()
                 self.print_banner()
                 
+            elif user_input == 'd5':
+                self.anonsurf_stop_menu()
+
+
+
+
+
+
+
+
+
+
     def anonsurf_install_menu(self):
         self.clear_screen()
         self.print_banner()
