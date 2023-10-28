@@ -147,7 +147,8 @@ class NetWizard():
             
             
             elif user_input == '5':
-                self.install_menu()
+                    self.install_menu()   
+                
             
             
             elif user_input == '6':
@@ -186,7 +187,6 @@ class NetWizard():
                 self.clear_screen()
                 self.print_banner()
                 
-            
     def install_menu(self):
             self.clear_screen()
             self.print_banner()
@@ -194,36 +194,38 @@ class NetWizard():
                 package_name = 'kali-anonsurf'
                 package = "git clone https://github.com/Und3rf10w/kali-anonsurf.git"
                 package_dir = 'kali-anonsurf'
+                print("Current working directory:", os.getcwd())
+                print("Trying to change to directory:", package_dir)
                 if not os.path.exists(package_dir):
                     user_install = input(f"The package {package_name} is not installed would you like to install it? (Y, N)")
                     if user_install == 'Y':
                         self.clear_screen()
                         self.print_banner()
                         home_dir = os.path.expanduser("~")
-                        os.chdir(home_dir)
+                        os.chdir('/root/home')
                         subprocess.run(package, shell=True, check=True)
                         os.chdir('kali-anonsurf')
                         subprocess.run(['./installer.sh'], check=True)
                 else:
-                    self.returnInput()
                     try:
-                        os.chdir(package_dir)
+                        os.chdir(home_dir)
                         start_command = 'anonsurf start'
                         subprocess.run(start_command, shell=True)
-                        
+                        print("Anonsurf started")
                     except Exception as e:
                         print(f"An error occurred: {e}")
-                        print("Click enter to return")
+                        
             
             except Exception as e:
                 print(f"An error occurred: {e}")
-                print("Click enter to return")
+            print()
             self.returnInput()
                             
                             
 
                 
     def returnInput(self):
+            print("Click enter to return...")
             input() == '\n'
             self.clear_screen()
             self.print_banner()
