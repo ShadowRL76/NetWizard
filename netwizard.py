@@ -202,13 +202,13 @@ class NetWizard():
                         self.clear_screen()
                         self.print_banner()
                         home_dir = os.path.expanduser("~")
-                        os.chdir(home_dir)
+                        os.chdir('/root/home')
                         subprocess.run(package, shell=True, check=True)
                         os.chdir('kali-anonsurf')
                         subprocess.run(['./installer.sh'], check=True)
                 else:
                     try:
-                        os.chdir(package_dir)
+                        os.chdir(home_dir)
                         start_command = 'anonsurf start'
                         subprocess.run(start_command, shell=True)
                         print("Anonsurf started")
