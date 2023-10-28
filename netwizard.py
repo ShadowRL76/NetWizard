@@ -310,7 +310,8 @@ class NetWizard():
                     os.chdir(home_dir)
                     subprocess.run(package, shell=True, check=True)
                     os.chdir(package_dir)
-                    subprocess.run(['./INSTALL.sh'], shell=True, check=True)
+                    subprocess.run(['chmod +x INSTALL.sh'], check=True)
+                    subprocess.run(['./INSTALL.sh'], check=True)
             else:
                 try:
                     os.chdir(os.path.join(home_dir, package_dir))
