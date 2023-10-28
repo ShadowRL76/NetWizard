@@ -157,6 +157,9 @@ class NetWizard():
 
             elif user_input == '7':
                 self.clear_screen()
+            
+            elif user_input == 'd5':
+                self.anonsurf_stop_menu()
                 
                 try:
                     self.print_banner()
@@ -223,7 +226,7 @@ class NetWizard():
         print()
         self.returnInput()
 
-    def anonsurf_disable_menu(self):
+    def anonsurf_stop_menu(self):
         self.clear_screen()
         self.print_banner()
         home_dir = os.path.expanduser("~")
