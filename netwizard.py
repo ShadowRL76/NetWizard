@@ -222,6 +222,10 @@ class NetWizard():
                 self.print_banner()
 
 
+            elif user_input == '0':
+                self.quit()
+
+
             elif user_input == 'd1':
                 pass
 
@@ -310,7 +314,7 @@ class NetWizard():
                     os.chdir(home_dir)
                     subprocess.run(package, shell=True, check=True)
                     os.chdir(package_dir)
-                    subprocess.run(['chmod +x INSTALL.sh'], check=True)
+                    subprocess.run(["chmod", "+x", "INSTALL.sh"])
                     subprocess.run(['./INSTALL.sh'], check=True)
             else:
                 try:
