@@ -190,6 +190,9 @@ class NetWizard():
                 self.anonsurf_stop_menu()
 
 
+            elif user_input == 'd6':
+                self.anonsurf_restart_menu()
+
 
 
 
@@ -240,7 +243,6 @@ class NetWizard():
         home_dir = os.path.expanduser("~")
         package_dir = 'kali-anonsurf'
         stop_command = 'anonsurf stop'
-        
         try:
             os.chdir(os.path.join(home_dir, package_dir))
             subprocess.run(stop_command, shell=True)
@@ -248,8 +250,20 @@ class NetWizard():
         except Exception as e:
             print(f"An error occurred: {e}")
                         
-            
-                
+    def anonsurf_restart_menu(self):
+        self.clear_screen()
+        self.print_banner()
+        home_dir = os.path.expanduser("~")
+        package_dir = 'kali-anonsurf'
+        restart_command = 'anonsurf restart'
+        try:
+            os.chdir(os.path.join(home_dir, package_dir))
+            subprocess.run(restart_command, shell=True)
+            print("Anonsurf restart successfully")
+        except Exception as e:
+            print(f"An error occurred: {e}")
+        self.returnInput()
+
     def returnInput(self):
             print("Click enter to return...")
             input() == '\n'
@@ -351,3 +365,4 @@ if __name__ == '__main__':
     net_wizard = NetWizard()
     net_wizard.menuOptions()
     
+
