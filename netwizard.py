@@ -187,7 +187,7 @@ class NetWizard():
                 self.clear_screen()
                 self.print_banner()
                 
-        def install_menu(self):
+    def install_menu(self):
             self.clear_screen()
             self.print_banner()
             try:
@@ -208,16 +208,20 @@ class NetWizard():
                         subprocess.run(['./installer.sh'], check=True)
                 else:
                     try:
-                        os.chdir(home_dir)
+                        os.chdir(package_dir)
                         start_command = 'anonsurf start'
                         subprocess.run(start_command, shell=True)
                         print("Anonsurf started")
                     except Exception as e:
                         print(f"An error occurred: {e}")
+                        
+            
             except Exception as e:
                 print(f"An error occurred: {e}")
             print()
-            self.returnInput()      
+            self.returnInput()
+                            
+                            
 
                 
     def returnInput(self):
