@@ -147,7 +147,7 @@ class NetWizard():
             
             
             elif user_input == '5':
-                    self.install_menu()   
+                self.install_menu()   
                 
             
             
