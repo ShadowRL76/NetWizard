@@ -210,7 +210,7 @@ class NetWizard():
                     self.print_banner()
                     os.chdir('/home')  
                     print(f"Current directory before cloning: {os.getcwd()}")
-                    subprocess.run(["git", "clone", "https://github.com/Und3rf10w/kali-anonsurf.git"], check=True)
+                    subprocess.run("git clone https://github.com/Und3rf10w/kali-anonsurf.git", check=True)
                     print(f"Current directory after cloning: {os.getcwd()}")
                     os.chdir('kali-anonsurf')
                     print(f"Current directory after changing to kali-anonsurf: {os.getcwd()}")
