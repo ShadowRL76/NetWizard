@@ -200,6 +200,7 @@ class NetWizard():
                     start_command = 'anonsurf start'
                     subprocess.run(start_command, shell=True)
                     print("Anonsurf started")
+                    self.returnInput()
                 except Exception as e:
                     print(f"An error occurred: {e}")
             else:
