@@ -187,7 +187,7 @@ class NetWizard():
                 self.clear_screen()
                 self.print_banner()
                 
-    def install_menu(self):
+    def anonsurf_install_menu(self):
         self.clear_screen()
         self.print_banner()
         try:
@@ -223,7 +223,19 @@ class NetWizard():
         print()
         self.returnInput()
 
-
+    def anonsurf_disable_menu(self):
+        self.clear_screen()
+        self.print_banner()
+        home_dir = os.path.expanduser("~")
+        package_dir = 'kali-anonsurf'
+        stop_command = 'anonsurf stop'
+        
+        try:
+            os.chdir(os.path.join(home_dir, package_dir))
+            subprocess.run(stop_command, shell=True)
+            print("Anonsurf stopped successfully")
+        except Exception as e:
+            print(f"An error occurred: {e}")
                         
             
                 
