@@ -239,7 +239,7 @@ class NetWizard():
 
 
             elif user_input == 'd4':
-                pass
+                self.anonym8_stop_command()
 
 
             elif user_input == 'd5':
@@ -290,7 +290,31 @@ class NetWizard():
                 subprocess.run(['reboot'])
 
 
+    def anonym8_stop_command(self):
+        self.clear_screen()
+        self.print_banner()
+        package_dir = 'anonym8'
+        home_dir = os.path.expanduser("~")
+        stop_command = 'anonym8 stop'
+        try:
+            os.chdir(os.path.join(home_dir, package_dir))
+            subprocess.run(stop_command, shell=True)
+            print("anonym8 stopping")
+            self.returnInput()
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            self.returnInput()
 
+
+    # Task 2: Create a separate menu within "anonym8" for all its features
+    def create_anonym8_menu():
+        # Your code to create the menu and access "anonym8" features here
+        pass
+
+    # Task 3: Implement the menu to use "anonym8" features
+    def use_anonym8_features():
+        # Your code to utilize "anonym8" features here
+        pass
 
     def anonym8_install_menu(self):
         self.clear_screen()
@@ -491,4 +515,3 @@ if __name__ == '__main__':
     net_wizard = NetWizard()
     net_wizard.menuOptions()
     
-
