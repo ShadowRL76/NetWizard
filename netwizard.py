@@ -41,8 +41,8 @@ class NetWizard():
                         raise Exception("Network interface 'wlan0' not found or MAC address is unavailable.")
         
                     input("Press Enter to continue...")
-                    self.clear_and_print()
-                    self.Mac_Address_Interface_Menu()
+                    self.clear_screen()
+                    self.MacAddressInterfaceMenu()
                 except Exception as e:
                     self.clear_and_print()
                     print()
@@ -60,9 +60,8 @@ class NetWizard():
                         raise Exception("Network interface 'wlan0' not found or MAC address is unavailable.")
                     self.clear_and_print()
                     input("Press Enter to continue...")
-                    
-                    self.Mac_Address_Interface_Menu()
-
+                    self.clear_screen()
+                    self.MacAddressInterfaceMenu()
                 except Exception as e:
                     self.clear_and_print()
                     print()
@@ -81,8 +80,8 @@ class NetWizard():
                         raise Exception("Network interface 'wlan0' not found or MAC address is unavailable.")
         
                     input("Press Enter to continue...")
-                    self.clear_and_print()
-                    self.Mac_Address_Interface_Menu()
+                    self.clear_screen()
+                    self.MacAddressInterfaceMenu()
                 except Exception as e:
                     self.clear_and_print()
                     print()
@@ -110,8 +109,8 @@ class NetWizard():
             print("4) Enable anonym8\t d4) Disable anonym8      | errors) Fix some errors")
             print("5) Enable anonsurf\t d5) Disable anonssurf    | ks) keyboard shortcuts")
             print("6) Anonssurf's status\t d6) Restart anonssurf    | d) Buy me a coffee")
-            print("7) View public IP\t d7) anonym8 menu         | s) Go to settings menu")
-            print("8) View MAC                                       | r) Reboot System")                                
+            print("7) View public IP\t                          | s) Go to settings menu")
+            print("8) View MAC")
             print("9) TOOLS \t         15) Spoof EMAIL")
             print("10) Handshake \t         16) Ngrok port forward")
             print("11) Find WPS pin\t 17) Ask (Howdoi tool)")
