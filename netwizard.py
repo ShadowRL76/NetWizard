@@ -239,7 +239,7 @@ class NetWizard():
 
 
             elif user_input == 'd4':
-                pass
+                self.anonym8_stop_command()
 
 
             elif user_input == 'd5':
@@ -290,11 +290,21 @@ class NetWizard():
                 subprocess.run(['reboot'])
 
 
-    # To-Do List
-    # Task 1: Add a "stop" command to gracefully stop "anonym8" services
-    def add_stop_command():
-        # Your code to implement the "stop" command here
-        pass
+    def anonym8_stop_command(self):
+        self.clear_screen()
+        self.print_banner()
+        package_dir = 'anonym8'
+        home_dir = os.path.expanduser("~")
+        stop_command = 'anonym8 stop'
+        try:
+            os.chdir(os.path.join(home_dir, package_dir))
+            subprocess.run(stop_command, shell=True)
+            print("anonym8 stopping")
+            self.returnInput()
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            self.returnInput()
+
 
     # Task 2: Create a separate menu within "anonym8" for all its features
     def create_anonym8_menu():
