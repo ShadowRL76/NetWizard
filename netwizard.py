@@ -321,12 +321,13 @@ class NetWizard():
             while True:
                 if user_input == '1':
                     self.clear_and_print()
-                    print("1) anonym8 start             => Start Tor Tunneling")
-                    print("2) anonym8 stop              => Stop Tor Tunneling")
-                    print("3) anonym8 change            => Changes identity restarting TOR")
-                    print("4) anonym8 status            => Tor Tunneling Status")
-                    print("b) Main menu")
-                    print("0) EXIT")
+                    print("1) anonym8 start                 => Start Tor Tunneling")
+                    print("2) anonym8 stop                  => Stop Tor Tunneling")
+                    print("3) anonym8 change                => Changes identity restarting TOR")
+                    print("4) anonym8 status                => Tor Tunneling Status")
+                    print("b) Main menu                     => Returns to Main Menu")
+                    print("0) EXIT                          => Exit's the program")
+                    
                     sub_tunneling_input = input("Choose: ")
                     
                     if sub_tunneling_input == '1':
@@ -351,9 +352,10 @@ class NetWizard():
 
                 elif user_input == '2':
                     self.clear_and_print()
-                    print("1) anonym8 status_ip        => IP status")
-                    print("b) Main menu")
-                    print("0) EXIT")
+                    print("1) anonym8 status_ip             => IP status")
+                    print("b) Main menu                     => Returns to Main Menu")
+                    print("0) EXIT                          => Exit's the program")
+                    
                     sub_status_ip = input("Choose: ")
 
                     if sub_status_ip == '1':
@@ -368,11 +370,11 @@ class NetWizard():
 
                 elif user_input == '3':
                     self.clear_and_print()
-                    print("1) anonym8 start_i2p         => Start i2p services")
-                    print("3) anonym8 stop_i2p          => Stop i2p services")
-                    print("3) anonym8 status_i2p        => i2P status")
-                    print("b) Main menu")
-                    print("0) EXIT")
+                    print("1) anonym8 start_i2p             => Start i2p services")
+                    print("3) anonym8 stop_i2p              => Stop i2p services")
+                    print("3) anonym8 status_i2p            => i2P status")
+                    print("b) Main menu                     => Returns to Main Menu")
+                    print("0) EXIT                          => Exit's the program")
 
                     i2p_input = input("Choose: ")
 
@@ -395,20 +397,130 @@ class NetWizard():
                         
 
 
-
-
-                elif user_input == '3':
-                    pass
                 elif user_input == '4':
-                    pass
+                    self.clear_and_print()
+                    print("1) anonym8 start_privoxy         => Start privoxy services")
+                    print("2) anonym8 stop_privoxy          => Stop privoxy services")
+                    print("3) anonym8 status_privoxy        => Privoxy status")
+                    print("b) Main menu                     => Returns to Main Menu")
+                    print("0) EXIT                          => Exit's the program")
+                    
+                    privoxy_input = input("Choose: ")
+
+                    if privoxy_input == '1':
+                        self.anonym8_privoxy_start()
+                    
+                    elif privoxy_input == '2':
+                        self.anonym8_privoxy_stop()
+                    
+                    elif privoxy_input== '3':
+                        self.anonym8_privoxy_status()
+                    
+                    elif privoxy_input == 'b':
+                        self.clear_and_print()
+                        self.menuOptions()
+                    
+                    elif privoxy_input == '0':
+                        self.quit()
+
+
+
+                
                 elif user_input == '5':
-                    pass
+                    self.clear_and_print()
+                    print("1) anonym8 start_mac             => Start macchanger services")
+                    print("2) anonym8 stop_mac              => Stop macchanger services")
+                    print("3) anonym8 status_mac            => macchanger status")
+                    print("b) Main menu                     => Returns to Main Menu")
+                    print("0) EXIT                          => Exit's the program")
+                    
+                    mac_input = input("Choose: ")
+
+                    if mac_input == '1':
+                        self.anonym8_mac_start()
+                    
+                    elif mac_input == '2':
+                        self.anonym8_mac_stop()
+                    
+                    elif mac_input== '3':
+                        self.anonym8_mac_status()
+                    
+                    elif mac_input == 'b':
+                        self.clear_and_print()
+                        self.menuOptions()
+                    
+                    elif mac_input == '0':
+                        self.quit()
+
+
+
                 elif user_input == '6':
-                    pass
+                    self.clear_and_print()
+                    print("1) anonym8 start_arm             => Start Monitoring Anonymizing Relay  (arm)")
+                    print("b) Main menu                     => Returns to Main Menu")
+                    print("0) EXIT                          => Exit's the program")
+                    
+                    arm_input = input("Choose: ")
+
+                    if arm_input == '1':
+                        self.anonym8_start_arm()
+
+                    elif arm_input == 'b':
+                        self.clear_and_print()
+                        self.menuOptions()
+                    
+                    elif arm_input == '0':
+                        self.quit()
+
+
                 elif user_input == '7':
-                    pass
+                    self.clear_and_print()
+                    print("1) anonym8 wipe                  => cache, RAM & swap-space cleaner")
+                    print("b) Main menu                     => Returns to Main Menu")
+                    print("0) EXIT                          => Exit's the program")
+                    
+                    wipe_input = input("Choose: ")
+
+                    if wipe_input == '1':
+                        self.anonym8_wipe()
+
+                    elif wipe_input == 'b':
+                        self.clear_and_print()
+                        self.menuOptions()
+                    
+                    elif wipe_input == '0':
+                        self.quit()
+
+
+
                 elif user_input == '8':
-                    pass
+                    self.clear_and_print()
+                    print("1) anonym8 change_hostname       => Randomly Spoofing hostname")
+                    print("2) anonym8 restore_hostname      => Restore Default hostname")
+                    print("3) anonym8 status_hostname       => Show Current Hostname")
+                    print("b) Main menu                     => Returns to Main Menu")
+                    print("0) EXIT                          => Exit's the program")
+
+                    hostname = input("Choose: ")
+
+                    if hostname == '1':
+                        self.anonym8_change_hostname()
+                    
+                    elif hostname == '2':
+                        self.anonym8_restore_hostname()
+                    
+                    elif hostname == '3':
+                        self.anonym8_status_hostname()
+                    
+                    elif hostname == 'b':
+                        self.clear_and_print()
+                        self.menuOptions()
+                    
+                    elif hostname == '0':
+                        self.quit()
+
+
+
 
 
     def anonym8_stop_command(self):
@@ -507,9 +619,154 @@ class NetWizard():
             self.returnInput()
 
 
+    def anonym8_privoxy_start(self):
+        self.clear_and_print()
+        package_dir = 'anonym8'
+        home_dir = os.path.expanduser("~")
+        start_privoxy_command = 'anonym8 start_privoxy'
+        try:
+            os.chdir(os.path.join(home_dir, package_dir))
+            subprocess.run(start_privoxy_command, shell=True)
+            self.returnInput()
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            self.returnInput()
+
+    
+    def anonym8_privoxy_stop(self):
+        self.clear_and_print()
+        package_dir = 'anonym8'
+        home_dir = os.path.expanduser("~")
+        stop_privoxy_command = 'anonym8 stop_privoxy'
+        try:
+            os.chdir(os.path.join(home_dir, package_dir))
+            subprocess.run(stop_privoxy_command, shell=True)
+            self.returnInput()
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            self.returnInput()
 
 
+    def anonym8_privoxy_status(self):
+        self.clear_and_print()
+        package_dir = 'anonym8'
+        home_dir = os.path.expanduser("~")
+        privoxy_status_command = 'anonym8 status_privoxy'
+        try:
+            os.chdir(os.path.join(home_dir, package_dir))
+            subprocess.run(privoxy_status_command, shell=True)
+            self.returnInput()
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            self.returnInput()
 
+    
+    def anonym8_mac_start(self):
+        self.clear_and_print()
+        package_dir = 'anonym8'
+        home_dir = os.path.expanduser("~")
+        privoxy_status_command = 'anonym8 start_mac'
+        try:
+            os.chdir(os.path.join(home_dir, package_dir))
+            subprocess.run(privoxy_status_command, shell=True)
+            self.returnInput()
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            self.returnInput()
+        
+    def anonym8_mac_stop(self):
+        self.clear_and_print()
+        package_dir = 'anonym8'
+        home_dir = os.path.expanduser("~")
+        privoxy_status_command = 'anonym8 stop_mac'
+        try:
+            os.chdir(os.path.join(home_dir, package_dir))
+            subprocess.run(privoxy_status_command, shell=True)
+            self.returnInput()
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            self.returnInput()
+        
+    def anonym8_mac_status(self):
+        self.clear_and_print()
+        package_dir = 'anonym8'
+        home_dir = os.path.expanduser("~")
+        privoxy_status_command = 'anonym8 status_mac'
+        try:
+            os.chdir(os.path.join(home_dir, package_dir))
+            subprocess.run(privoxy_status_command, shell=True)
+            self.returnInput()
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            self.returnInput()
+        
+    def anonym8_start_arm(self):
+        self.clear_and_print()
+        package_dir = 'anonym8'
+        home_dir = os.path.expanduser("~")
+        arm_start_command = 'anonym8 start_arm'
+        try:
+            os.chdir(os.path.join(home_dir, package_dir))
+            subprocess.run(arm_start_command, shell=True)
+            self.returnInput()
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            self.returnInput()
+
+    def anonym8_wipe(self):
+        self.clear_and_print()
+        package_dir = 'anonym8'
+        home_dir = os.path.expanduser("~")
+        wipe_command = 'anonym8 wipe'
+        try:
+            os.chdir(os.path.join(home_dir, package_dir))
+            subprocess.run(wipe_command, shell=True)
+            self.returnInput()
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            self.returnInput()
+
+
+    def anonym8_change_hostname(self):
+        self.clear_and_print()
+        package_dir = 'anonym8'
+        home_dir = os.path.expanduser("~")
+        change_hostname_command = 'anonym8 change_hostname'
+        try:
+            os.chdir(os.path.join(home_dir, package_dir))
+            subprocess.run(change_hostname_command, shell=True)
+            self.returnInput()
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            self.returnInput()
+
+
+    def anonym8_restore_hostname(self):
+        self.clear_and_print()
+        package_dir = 'anonym8'
+        home_dir = os.path.expanduser("~")
+        hostname_restore_command = 'anonym8 restore_hostname'
+        try:
+            os.chdir(os.path.join(home_dir, package_dir))
+            subprocess.run(hostname_restore_command, shell=True)
+            self.returnInput()
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            self.returnInput()
+
+
+    def anonym8_status_hostname(self):
+        self.clear_and_print()
+        package_dir = 'anonym8'
+        home_dir = os.path.expanduser("~")
+        hostname_status_command = 'anonym8 status_hostname'
+        try:
+            os.chdir(os.path.join(home_dir, package_dir))
+            subprocess.run(hostname_status_command, shell=True)
+            self.returnInput()
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            self.returnInput()
 
 
 
@@ -656,24 +913,6 @@ class NetWizard():
         quit()
 
 
-    def help(self):
-        print("\n** Help Menu **")
-        print("Available Commands:")
-        print("  h - Display this help menu")
-        print("  q - Exit the NetWizard")
-        print("  v - Display the version of NetWizard")
-        print("  s - Start the port scanning tool")
-        print()
-        print("Port Scanning:")
-        print("  To scan for open ports on a target, use the 's' command.")
-        print("  You can specify an IP address and a port number to scan.")
-        print("  To scan all ports, type 'all' as the port number.")
-        print("  Example: s")
-        print("           Enter an IP address: 192.168.1.1")
-        print("           Enter a Port number or 'all': 80")
-        print()
-        print("For more detailed instructions and examples, please refer to the documentation available at ")#add documentation link
-        print()
         
 class PortScanner:
     def __init__(self):
