@@ -109,7 +109,7 @@ class NetWizard():
             print("4) Enable anonym8\t d4) Disable anonym8      | errors) Fix some errors")
             print("5) Enable anonsurf\t d5) Disable anonssurf    | ks) keyboard shortcuts")
             print("6) Anonssurf's status\t d6) Restart anonssurf    | d) Buy me a coffee")
-            print("7) View public IP\t                          | s) Go to settings menu")
+            print("7) View public IP\t d7) anonym8 menu         | s) Go to settings menu")
             print("8) View MAC")
             print("9) TOOLS \t         15) Spoof EMAIL")
             print("10) Handshake \t         16) Ngrok port forward")
