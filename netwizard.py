@@ -18,15 +18,11 @@ class NetWizard():
         self.eth_mac = get_mac_address(interface="en0")
         self.wlan0_mac = get_mac_address(interface="wlan0")
         self.wlan0mon_mac = get_mac_address(interface="wlan0mon")
-        self.clear_screen()
-        self.print_banner()
+        self.clear_and_print()
 
 
 
-     
-
-    def MacAddressInterfaceMenu(self):
-        MacAddressInterfaceMenu = ('wlan0', 'wlan0mon', 'eth0', 'b', '0')
+    def Mac_Address_Interface_Menu(self):
         while True:
             print("1) wlan0")
             print("2) wlan0mon")
@@ -46,7 +42,7 @@ class NetWizard():
         
                     input("Press Enter to continue...")
                     self.clear_screen()
-                    self.MacAddressInterfaceMenu()
+                    self.Mac_Address_Interface_Menu()
                 except Exception as e:
                     print(f"An error occurred: {e}")
 
@@ -61,7 +57,7 @@ class NetWizard():
         
                     input("Press Enter to continue...")
                     self.clear_screen()
-                    self.MacAddressInterfaceMenu()
+                    self.Mac_Address_Interface_Menu()
                 except Exception as e:
                     print(f"An error occurred: {e}")
             
@@ -76,21 +72,21 @@ class NetWizard():
         
                     input("Press Enter to continue...")
                     self.clear_screen()
-                    self.MacAddressInterfaceMenu()
+                    self.Mac_Address_Interface_Menu()
                 except Exception as e:
                     print(f"An error occurred: {e}")
 
             
             elif user_input == 'b':
-                self.clear_screen()
-                self.print_banner()
+                self.clear_and_print()
                 self.menuOptions()
             
+            elif user_input == '0':
+                        self.quit()
             
 
     
     def menuOptions(self):
-        menu = ('ifc', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '0')
         while True:
             print("ifc) ifconfig\t          l) local IPs & gateways | scan) Arp-scan network")
             print("1) Enable wlan0\t         d1) Disable wlan0        | start) Start monitor mode")
@@ -99,7 +95,7 @@ class NetWizard():
             print("4) Enable anonym8\t d4) Disable anonym8      | errors) Fix some errors")
             print("5) Enable anonsurf\t d5) Disable anonssurf    | ks) keyboard shortcuts")
             print("6) Anonssurf's status\t d6) Restart anonssurf    | d) Buy me a coffee")
-            print("7) View public IP\t                          | s) Go to settings menu")
+            print("7) View public IP\t d7) anonym8 menu                    | s) Go to settings menu")
             print("8) View MAC                                       | r) Reboot System")                                
             print("9) TOOLS \t         15) Spoof EMAIL")
             print("10) Handshake \t         16) Ngrok port forward")
@@ -113,16 +109,14 @@ class NetWizard():
 
             
             if user_input.lower() == 'ifc':
-                self.clear_screen()
-                self.print_banner()
+                self.clear_and_print()
                 print(f"Your network interfaces are {conf.ifaces}")
                 print()
                 print()
                 print("Click enter to return")
                 if input() == '\n':
                     self.menuOptions()
-                self.clear_screen()
-                self.print_banner()
+                self.clear_and_print()
             
 
             elif user_input == '1':
@@ -159,15 +153,13 @@ class NetWizard():
                     print("Click enter to return")
                     if input() == '\n':
                         self.menuOptions()
-                    self.clear_screen()
-                    self.print_banner()
+                    self.clear_and_print()
                 except Exception as e:
                     print("Error: No public IP address found")
 
             elif user_input == '8':
-                self.clear_screen()
-                self.print_banner()
-                self.MacAddressInterfaceMenu()
+                self.clear_and_print()
+                self.Mac_Address_Interface_Menu()
 
             elif user_input == '9':
                 pass
@@ -214,12 +206,11 @@ class NetWizard():
 
 
             elif user_input == '20':
-                self.print_banner()
+                self.clear_and_print()
                 PortScanner()
                 print()
                 input('Press enter to continue...')
-                self.clear_screen()
-                self.print_banner()
+                self.clear_and_print()
 
 
             elif user_input == '0':
@@ -249,6 +240,8 @@ class NetWizard():
             elif user_input == 'd6':
                 self.anonsurf_restart_menu()
 
+            elif user_input == 'd7':
+                self.anonym8_menu()
 
             elif user_input == 'l':
                 pass
@@ -289,36 +282,227 @@ class NetWizard():
             elif user_input == 'r':
                 subprocess.run(['reboot'])
 
+            else:
+                print("Thats not an option!")
+                time.sleep(0.5)
+                self.clear_and_print()
+                self.menuOptions()
+
+    
+    def anonym8_menu(self):
+        self.clear_and_print()
+        while True:
+            print("1) ---[ Tor tunneling features ]---")
+            print("2) ---[ IP related features ]---")
+            print("3) ---[ I2P related features ]---")
+            print("4) ---[ privoxy related features ]---")
+            print("5) ---[ macchanger related features ]---")
+            print("6) ---[ arm related features ]---")
+            print("7) ---[ wipe related features ]---")
+            print("8) ---[ hostname related features ]---")
+            print("b  ---[ back to main menu ]---")
+            print("0  ---[ exits the program ]")
+            user_input = input("Choose: ")
+
+            while True:
+                if user_input == '1':
+                    self.clear_and_print()
+                    print("1) anonym8 start             => Start Tor Tunneling")
+                    print("2) anonym8 stop              => Stop Tor Tunneling")
+                    print("3) anonym8 change            => Changes identity restarting TOR")
+                    print("4) anonym8 status            => Tor Tunneling Status")
+                    print("b) Main menu")
+                    print("0) EXIT")
+                    sub_tunneling_input = input("Choose: ")
+                    
+                    if sub_tunneling_input == '1':
+                        self.anonym8_install_menu()
+                    
+                    elif sub_tunneling_input == '2':
+                        self.anonym8_stop_command()
+
+                    elif sub_tunneling_input == '3':
+                        self.anonym8_change_command()
+
+                    elif sub_tunneling_input == '4':
+                        self.anonym8_status_command()
+
+                    elif sub_tunneling_input == 'b':
+                        self.clear_and_print()
+                        self.menuOptions()
+                    
+                    elif sub_tunneling_input == '0':
+                        self.quit()
+
+
+                elif user_input == '2':
+                    self.clear_and_print()
+                    print("1) anonym8 status_ip        => IP status")
+                    print("b) Main menu")
+                    print("0) EXIT")
+                    sub_status_ip = input("Choose: ")
+
+                    if sub_status_ip == '1':
+                        self.anonym8_ip_status()
+
+                    elif sub_status_ip == 'b':
+                        self.clear_and_print()
+                        self.menuOptions()
+                    
+                    elif sub_status_ip == '0':
+                        self.quit()
+
+                elif user_input == '3':
+                    self.clear_and_print()
+                    print("1) anonym8 start_i2p         => Start i2p services")
+                    print("3) anonym8 stop_i2p          => Stop i2p services")
+                    print("3) anonym8 status_i2p        => i2P status")
+                    print("b) Main menu")
+                    print("0) EXIT")
+
+                    i2p_input = input("Choose: ")
+
+                    if i2p_input == '1':
+                        self.anonym8_start_i2p()
+                    
+                    elif i2p_input == '2':
+                        self.anonym8_stop_i2p()
+                    
+                    elif i2p_input == '3':
+                        self.anonym8_status_command()
+                    
+                    elif i2p_input == 'b':
+                        self.clear_and_print()
+                        self.menuOptions()
+                    
+                    elif i2p_input == '0':
+                        self.quit()
+                    
+                        
+
+
+
+
+                elif user_input == '3':
+                    pass
+                elif user_input == '4':
+                    pass
+                elif user_input == '5':
+                    pass
+                elif user_input == '6':
+                    pass
+                elif user_input == '7':
+                    pass
+                elif user_input == '8':
+                    pass
+
 
     def anonym8_stop_command(self):
-        self.clear_screen()
-        self.print_banner()
+        self.clear_and_print()
         package_dir = 'anonym8'
         home_dir = os.path.expanduser("~")
         stop_command = 'anonym8 stop'
         try:
             os.chdir(os.path.join(home_dir, package_dir))
             subprocess.run(stop_command, shell=True)
-            print("anonym8 stopping")
             self.returnInput()
         except Exception as e:
             print(f"An error occurred: {e}")
             self.returnInput()
 
 
-    # Task 2: Create a separate menu within "anonym8" for all its features
-    def create_anonym8_menu():
-        # Your code to create the menu and access "anonym8" features here
-        pass
+    def anonym8_change_command(self):
+        self.clear_and_print()
+        package_dir = 'anonym8'
+        home_dir = os.path.expanduser("~")
+        change_command = 'anonym8 change'
+        try:
+            os.chdir(os.path.join(home_dir, package_dir))
+            subprocess.run(change_command, shell=True)
+            self.returnInput()
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            self.returnInput()
 
-    # Task 3: Implement the menu to use "anonym8" features
-    def use_anonym8_features():
-        # Your code to utilize "anonym8" features here
-        pass
+
+    def anonym8_status_command(self):
+        self.clear_and_print()
+        package_dir = 'anonym8'
+        home_dir = os.path.expanduser("~")
+        status_command = 'anonym8 status'
+        try:
+            os.chdir(os.path.join(home_dir, package_dir))
+            subprocess.run(status_command, shell=True)
+            self.returnInput()
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            self.returnInput()
+
+
+    def anonym8_ip_status(self):
+        self.clear_and_print()
+        package_dir = 'anonym8'
+        home_dir = os.path.expanduser("~")
+        ip_status_command = 'anonym8 status_ip'
+        try:
+            os.chdir(os.path.join(home_dir, package_dir))
+            subprocess.run(ip_status_command, shell=True)
+            self.returnInput()
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            self.returnInput()
+
+
+    def anonym8_start_i2p(self):
+        self.clear_and_print()
+        package_dir = 'anonym8'
+        home_dir = os.path.expanduser("~")
+        start_ip2_command = 'anonym8 start_i2p'
+        try:
+            os.chdir(os.path.join(home_dir, package_dir))
+            subprocess.run(start_ip2_command, shell=True)
+            self.returnInput()
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            self.returnInput()
+
+    def anonym8_stop_i2p(self):
+        self.clear_and_print()
+        package_dir = 'anonym8'
+        home_dir = os.path.expanduser("~")
+        stop_ip2_command = 'anonym8 stop_i2p'
+        try:
+            os.chdir(os.path.join(home_dir, package_dir))
+            subprocess.run(stop_ip2_command, shell=True)
+            self.returnInput()
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            self.returnInput()
+
+    def anonym8_i2p_status(self):
+        self.clear_and_print()
+        package_dir = 'anonym8'
+        home_dir = os.path.expanduser("~")
+        status_ip2_command = 'anonym8 status_i2p'
+        try:
+            os.chdir(os.path.join(home_dir, package_dir))
+            subprocess.run(status_ip2_command, shell=True)
+            self.returnInput()
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            self.returnInput()
+
+
+
+
+
+
+
+
+
 
     def anonym8_install_menu(self):
-        self.clear_screen()
-        self.print_banner()
+        self.clear_and_print()
         try:
             package_name = 'anonym8'
             package = "git clone https://github.com/HiroshiManRise/anonym8.git"
@@ -333,8 +517,7 @@ class NetWizard():
             if not os.path.exists(os.path.join(home_dir, package_dir)):
                 user_install = input(f"The package {package_name} is not installed. Would you like to install it? (Y, N)")
                 if user_install == 'Y':
-                    self.clear_screen()
-                    self.print_banner()
+                    self.clear_and_print()
                     os.chdir(home_dir)
                     subprocess.run(package, shell=True, check=True)
                     os.chdir(package_dir)
@@ -355,8 +538,7 @@ class NetWizard():
 
 
     def anonsurf_install_menu(self):
-        self.clear_screen()
-        self.print_banner()
+        self.clear_and_print()
         try:
             package_name = 'kali-anonsurf'
             package = "git clone https://github.com/Und3rf10w/kali-anonsurf.git"
@@ -370,8 +552,7 @@ class NetWizard():
             if not os.path.exists(os.path.join(home_dir, package_dir)):
                 user_install = input(f"The package {package_name} is not installed. Would you like to install it? (Y, N)")
                 if user_install == 'Y':
-                    self.clear_screen()
-                    self.print_banner()
+                    self.clear_and_print()
                     os.chdir(home_dir)
                     subprocess.run(package, shell=True, check=True)
                     os.chdir(package_dir)
@@ -392,8 +573,7 @@ class NetWizard():
 
 
     def anonsurf_stop_menu(self):
-        self.clear_screen()
-        self.print_banner()
+        self.clear_and_print()
         home_dir = os.path.expanduser("~")
         package_dir = 'kali-anonsurf'
         stop_command = 'anonsurf stop'
@@ -406,8 +586,7 @@ class NetWizard():
 
 
     def anonsurf_restart_menu(self):
-        self.clear_screen()
-        self.print_banner()
+        self.clear_and_print()
         home_dir = os.path.expanduser("~")
         package_dir = 'kali-anonsurf'
         restart_command = 'anonsurf restart'
@@ -418,6 +597,11 @@ class NetWizard():
         except Exception as e:
             print(f"An error occurred: {e}")
         self.returnInput()
+
+
+
+
+
 
 
     def returnInput(self):
@@ -439,6 +623,9 @@ class NetWizard():
     def clear_screen(self):
         os.system('clear')
 
+    def clear_and_print(self):
+        self.clear_screen()
+        self.print_banner()
 
     def print_banner(self):
         banner = pyfiglet.Figlet(font='doom')
