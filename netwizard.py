@@ -899,14 +899,14 @@ class NetWizard():
         self.print_banner()
 
     def print_banner(self):
-        banner = pyfiglet.Figlet(font='doom')
+        banner = pyfiglet.Figlet(font='standard')
         banner_text = banner.renderText('NetWizard')
         colored_banner = termcolor.colored(banner_text, 'red', 'on_black')
         print(colored_banner)
 
 
     def quit(self):
-        banner = pyfiglet.Figlet(font='doom')
+        banner = pyfiglet.Figlet(font='standard')
         banner_text = banner.renderText('Goodbye')
         colored_banner = termcolor.colored(banner_text, 'red', 'on_black')
         print(colored_banner)
